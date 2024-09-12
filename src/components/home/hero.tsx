@@ -102,7 +102,11 @@ export default function Hero() {
           <div className="flex items-center gap-4">
             {socials.map((social, index) => (
               <Button asChild key={index} variant="ghost">
-                <Link href={social.href} className="flex items-center gap-2">
+                <Link
+                  href={social.href}
+                  target="_blank"
+                  className="flex items-center gap-2"
+                >
                   {social.icon} {social.name}
                 </Link>
               </Button>

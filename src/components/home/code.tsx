@@ -50,7 +50,7 @@ export default function CodeBlock({ code, animated }: CodeBlockProps) {
       return (
         <p>
           <span style={{ color: colorsMap[currentTheme]["green"] }}>
-            "{value}"
+            {`"` + value + `"`}
           </span>
           ,
         </p>
@@ -73,7 +73,7 @@ export default function CodeBlock({ code, animated }: CodeBlockProps) {
           {value.map((item, index) => (
             <span key={index}>
               <span style={{ color: colorsMap[currentTheme]["green"] }}>
-                "{item}"
+                {`"` + item + `"`}
               </span>
               {index < value.length - 1 && <span>, </span>}
             </span>
@@ -107,7 +107,7 @@ export default function CodeBlock({ code, animated }: CodeBlockProps) {
   }
   function getAlignment(
     value: string | string[] | boolean | number | object,
-    key: any
+    key: string
   ) {
     if (typeof value === "object" && !Array.isArray(value)) {
       return (
@@ -146,7 +146,7 @@ export default function CodeBlock({ code, animated }: CodeBlockProps) {
       {code && (
         <div className="p-6">
           <div className="flex items-center gap-1">
-            <p style={{ color: colorsMap[currentTheme]["rose"] }}>const</p>
+            <p style={{ color: colorsMap[currentTheme]["rose"] }}>{"const"}</p>
             <p>
               <span style={{ color: colorsMap[currentTheme]["orange"] }}>
                 {code.variableName}

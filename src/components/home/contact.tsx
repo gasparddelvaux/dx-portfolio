@@ -60,7 +60,7 @@ export default function Contact() {
       </div>
       <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-4 mt-16">
         {contact.map((item, index) => (
-          <Card key={index}>
+          <Card key={index} className="relative animated-border-neutral">
             <div className="flex h-full w-full items-center flex-col justify-center p-6">
               <div className="flex items-center gap-2">
                 {item.icon}

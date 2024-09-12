@@ -48,7 +48,7 @@ export default function Navbar() {
             {navItems.map((item, index) => (
               <li
                 key={index}
-                className="text-muted-foreground cursor-pointer hover:text-primary transition-colors duration-300"
+                className="text-muted-foreground cursor-pointer hover:text-violet-500 transition-colors duration-300"
                 onClick={() => scrollToSection(item.section)}
               >
                 {item.name}

@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import "./custom.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import type { Metadata } from "next";
+import "./custom.css";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Gaspard Delvaux | Développeur full-stack",
