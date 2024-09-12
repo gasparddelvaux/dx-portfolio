@@ -55,7 +55,7 @@ export default function About() {
             ))}
           </div>
         </div>
-        <div className="flex items-center mt-8">
+        <div className="flex items-center">
           <div className="flex-1 -me-16">
             <div className="p-6">
               <Image

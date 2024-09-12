@@ -77,11 +77,11 @@ export default function Experience() {
                   {experience.date}
                 </Badge>
                 {experience.website && (
-                  <Link href={experience.website} target="_blank">
-                    <Badge variant="outline" className="w-fit">
+                  <Badge variant="outline" className="w-fit">
+                    <Link href={experience.website} target="_blank">
                       {experience.website}
-                    </Badge>
-                  </Link>
+                    </Link>
+                  </Badge>
                 )}
               </div>
             </CardContent>

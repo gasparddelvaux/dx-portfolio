@@ -1,5 +1,6 @@
 "use client";
 import { IconMenu2 } from "@tabler/icons-react";
+import { useState } from "react";
 import { Button } from "../ui/button";
 import {
   Sheet,
@@ -26,9 +27,12 @@ const navItems: NavItems[] = [
 ];
 
 export default function Navbar() {
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
+
   function scrollToSection(section: string) {
     const el = document.getElementById(section);
     if (el) {
+      if (isSheetOpen) setIsSheetOpen(false);
       el.scrollIntoView({ behavior: "smooth" });
     }
   }
@@ -51,7 +55,7 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-          <Sheet>
+          <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild className="xl:hidden">
               <Button variant="outline" size="icon">
                 <IconMenu2 size={18} />

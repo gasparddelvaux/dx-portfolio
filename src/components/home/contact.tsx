@@ -70,7 +70,7 @@ export default function Contact() {
               <Link
                 href={item.link}
                 target={item.target}
-                className="mt-2 text-sm text-muted-foreground flex items-center gap-1 hover:underline underline-offset-4"
+                className="mt-2 text-sm text-muted-foreground flex items-center gap-2 hover:underline underline-offset-4"
               >
                 {item.subtitle} <IconClick size={16} />
               </Link>

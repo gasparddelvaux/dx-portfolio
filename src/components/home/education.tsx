@@ -42,12 +42,12 @@ export default function Education() {
               <CardTitle>{cert.title}</CardTitle>
             </CardHeader>
             <CardContent>
-              <ul className="flex gap-1 flex-col text-sm text-muted-foreground">
-                <li className="flex items-center gap-1">
+              <ul className="flex gap-2 flex-col text-sm text-muted-foreground">
+                <li className="flex items-center gap-2">
                   <IconMapPin size={16} />
                   {cert.location}
                 </li>
-                <li className="flex items-center gap-1">
+                <li className="flex items-center gap-2">
                   <IconCalendar size={16} />
                   {cert.date}
                 </li>
