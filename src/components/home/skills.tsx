@@ -42,10 +42,10 @@ const stack: StackItem[] = [
 
 export default function Skills() {
   return (
-    <section className="container px-12 mx-auto mt-40 pt-40" id="skills">
-      <h3 className="text-3xl font-medium text-center">Compétences</h3>
+    <section className="container px-12 mx-auto mt-32 pt-40" id="skills">
+      <h3 className="text-3xl font-medium text-center">{"Compétences"}</h3>
       <Carousel
-        className="w-full mt-8"
+        className="w-full mt-16"
         opts={{ loop: true }}
         plugins={[
           Autoscroll({

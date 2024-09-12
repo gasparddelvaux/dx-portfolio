@@ -158,9 +158,9 @@ const projects: Code[] = [
 
 export default function Projects() {
   return (
-    <section className="container px-12 mx-auto mt-40 pt-40" id="projects">
-      <h3 className="text-3xl font-medium text-center">Projets</h3>
-      <Carousel className="mt-8">
+    <section className="container px-12 mx-auto mt-32 pt-40" id="projects">
+      <h3 className="text-3xl font-medium text-center">{"Projets"}</h3>
+      <Carousel className="mt-16">
         <CarouselContent>
           {projects.map((project, index) => (
             <CarouselItem key={index} className="lg:basis-1/2">

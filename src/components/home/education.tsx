@@ -28,9 +28,9 @@ const education: EducationItem[] = [
 
 export default function Education() {
   return (
-    <section className="container px-12 mx-auto mt-40 pt-40" id="education">
-      <h3 className="text-3xl font-medium text-center">Éducation</h3>
-      <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8 mt-8">
+    <section className="container px-12 mx-auto mt-32 pt-40" id="education">
+      <h3 className="text-3xl font-medium text-center">{"Éducation"}</h3>
+      <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8 mt-16">
         {education.map((cert, index) => (
           <Card
             key={index}
