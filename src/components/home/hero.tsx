@@ -75,7 +75,7 @@ export default function Hero() {
     }
   }
   return (
-    <section className="container px-12 mx-auto relative" id="hero">
+    <section className="container px-6 mx-auto relative" id="hero">
       <div className="hidden md:block absolute top-0 left-0 w-full h-full z-[-20]">
         <Image
           src="/assets/svg/hero.svg"
@@ -85,7 +85,7 @@ export default function Hero() {
           className="object-cover w-full"
         />
       </div>
-      <div className="grid xl:grid-cols-2 gap-24 pt-60">
+      <div className="grid xl:grid-cols-2 gap-36 pt-60">
         <div className="flex flex-col gap-8 h-full justify-center">
           <h2 className="text-5xl font-bold leading-[3.5rem]">
             {" Hey !"}
@@ -99,7 +99,7 @@ export default function Hero() {
             </span>
             {"."}
           </h2>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center flex-wrap gap-4">
             {socials.map((social, index) => (
               <Button asChild key={index} variant="ghost">
                 <Link
@@ -112,7 +112,7 @@ export default function Hero() {
               </Button>
             ))}
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center flex-wrap gap-4">
             <Button
               className="flex items-center gap-2"
               size="lg"

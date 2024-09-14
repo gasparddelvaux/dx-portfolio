@@ -1,11 +1,14 @@
+"use client";
 import {
   Carousel,
+  CarouselApi,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Code } from "@/types/ui";
+import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
+import React from "react";
+import { Button } from "../ui/button";
 import CodeBlock from "./code";
 
 const projects: Code[] = [
@@ -157,10 +160,22 @@ const projects: Code[] = [
 ];
 
 export default function Projects() {
+  const [api, setApi] = React.useState<CarouselApi>();
+
+  function Scroll(direction: "prev" | "next") {
+    if (api) {
+      if (direction === "prev") {
+        api.scrollPrev();
+      } else {
+        api.scrollNext();
+      }
+    }
+  }
+
   return (
-    <section className="container px-12 mx-auto mt-32 pt-40" id="projects">
+    <section className="container px-6 mx-auto mt-32 pt-40" id="projects">
       <h3 className="text-3xl font-medium text-center">{"Projets"}</h3>
-      <Carousel className="mt-16">
+      <Carousel className="mt-16" setApi={setApi} opts={{ loop: true }}>
         <CarouselContent>
           {projects.map((project, index) => (
             <CarouselItem key={index} className="lg:basis-1/2">
@@ -168,9 +183,15 @@ export default function Projects() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
       </Carousel>
+      <div className="w-full flex items-center justify-center gap-4 mt-4">
+        <Button onClick={() => Scroll("prev")} variant="outline">
+          <IconArrowLeft size={14} />
+        </Button>
+        <Button onClick={() => Scroll("next")} variant="outline">
+          <IconArrowRight size={14} />
+        </Button>
+      </div>
     </section>
   );
 }

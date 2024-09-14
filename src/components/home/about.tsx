@@ -32,9 +32,33 @@ const badges: Badge[] = [
   },
 ];
 
+type Picture = {
+  src: string;
+  alt: string;
+};
+
+const pictures: Picture[] = [
+  {
+    src: "/assets/img/chiapas.png",
+    alt: "Chiapas at Phantasialand",
+  },
+  {
+    src: "/assets/img/laika.png",
+    alt: "My dog Laika",
+  },
+  {
+    src: "/assets/img/zadra.png",
+    alt: "Zadra at Energylandia",
+  },
+  {
+    src: "/assets/img/newyork.png",
+    alt: "Me in Time Square, New York",
+  },
+];
+
 export default function About() {
   return (
-    <section className="container px-12 mx-auto mt-32 pt-40" id="about">
+    <section className="container px-6 mx-auto mt-32 pt-40" id="about">
       <div className="grid xl:grid-cols-2 gap-24">
         <div className="flex flex-col gap-4">
           <h3 className="text-3xl font-medium">{"À propos"}</h3>
@@ -43,7 +67,7 @@ export default function About() {
               <li key={index}>{text}</li>
             ))}
           </ul>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             {badges.map((badge, index) => (
               <Badge
                 key={index}
@@ -55,49 +79,20 @@ export default function About() {
             ))}
           </div>
         </div>
-        <div className="flex items-center">
-          <div className="flex-1 -me-16">
-            <div className="p-6">
+        <div className="flex items-center justify-center">
+          {pictures.map((picture, index) => (
+            <div key={index} className={`flex-1 ${index != 3 && "-me-8"}`}>
               <Image
-                src="/assets/img/chiapas.png"
-                alt="Chiapas at Phantasialand"
+                src={picture.src}
+                alt={picture.alt}
                 width={500}
                 height={500}
-                className="object-cover rounded-lg shadow-sm"
+                className={`object-cover rounded-lg shadow-sm ${
+                  index != 0 && "rounded-s-none"
+                }`}
               />
             </div>
-          </div>
-          <div className="flex-1 -me-16">
-            <div className="p-4">
-              <Image
-                src="/assets/img/laika.png"
-                alt="My dog Laika"
-                width={500}
-                height={500}
-                className="object-cover rounded-lg shadow-sm"
-              />
-            </div>
-          </div>
-          <div className="flex-1 -me-16">
-            <div className="p-2">
-              <Image
-                src="/assets/img/zadra.png"
-                alt="Zadra at Energylandia"
-                width={500}
-                height={500}
-                className="object-cover rounded-lg shadow-sm-"
-              />
-            </div>
-          </div>
-          <div className="flex-1">
-            <Image
-              src="/assets/img/newyork.png"
-              alt="Me in Time Square, New York"
-              width={500}
-              height={500}
-              className="object-cover rounded-lg shadow-sm"
-            />
-          </div>
+          ))}
         </div>
       </div>
     </section>

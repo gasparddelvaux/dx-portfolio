@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <section className="border-t py-4 bg-background mt-60">
-      <div className="container px-12 mx-auto flex justify-between flex-wrap gap-2">
+      <div className="container px-6 mx-auto flex justify-between flex-wrap gap-2">
         <p className="text-sm text-muted-foreground">
           {`© ${new Date().getFullYear()} Gaspard Delvaux. Tous droits réservés. Inspiré (non forké) du portfolio de Abu Said.`}
         </p>

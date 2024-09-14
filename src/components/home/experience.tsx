@@ -55,7 +55,7 @@ const experiences: ExperienceItem[] = [
 
 export default function Experience() {
   return (
-    <section className="container px-12 mx-auto mt-32 pt-40" id="experience">
+    <section className="container px-6 mx-auto mt-32 pt-40" id="experience">
       <h3 className="text-3xl font-medium text-center">{"Expérience"}</h3>
       <div className="grid xl:grid-cols-2 gap-8 mt-16">
         {experiences.map((experience, index) => (

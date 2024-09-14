@@ -49,7 +49,7 @@ const contact: ContactItem[] = [
 
 export default function Contact() {
   return (
-    <section className="container px-12 mx-auto mt-32 pt-40" id="contact">
+    <section className="container px-6 mx-auto mt-32 pt-40" id="contact">
       <div className="flex flex-col gap-4">
         <h3 className="text-3xl font-medium">{"Contact"}</h3>
         <p className="text-sm text-muted-foreground lg:w-1/3">

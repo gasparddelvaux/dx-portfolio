@@ -39,9 +39,11 @@ export default function Navbar() {
 
   return (
     <section className="border-b py-4 bg-background fixed top-0 left-0 w-full z-50">
-      <nav className="container px-12 mx-auto flex justify-between items-center">
+      <nav className="container px-6 mx-auto flex justify-between items-center">
         <h1 className="text-3xl font-bold bg-gradient-to-tr from-violet-500 to-rose-500 inline-block text-transparent bg-clip-text">
-          {"Gaspard Delvaux"}
+          {"Gaspard "}
+          <span className="inline-flex sm:hidden">D.</span>
+          <span className="hidden sm:inline-flex">Delvaux</span>
         </h1>
         <div className="flex items-center gap-4 xl:gap-8">
           <ul className="hidden xl:flex items-center gap-8">
