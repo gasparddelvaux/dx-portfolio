@@ -13,6 +13,20 @@ import CodeBlock from "./code";
 
 const projects: Code[] = [
   {
+    variableName: "gasparddelvauxdev",
+    type: "Project",
+    content: {
+      title: "Portfolio 2024",
+      company: "N/A",
+      description:
+        "Ce site web est la dernière version de mon portfolio personnel. Il a été développé pour mettre en avant mes compétences et mes projets personnels dans le but de trouver un nouvel emploi.",
+      year: "2024",
+      stack: ["NextJS", "TailwindCSS", "Shadcn/UI", "Plesk"],
+      status: "En production",
+      website: "https://gaspard.delvaux.dev",
+    },
+  },
+  {
     variableName: "thrillsworld",
     type: "Project",
     content: {
