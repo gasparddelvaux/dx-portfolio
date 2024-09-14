@@ -176,11 +176,12 @@ const projects: Code[] = [
 export default function Projects() {
   const [api, setApi] = React.useState<CarouselApi>();
 
-  function Scroll(direction: "prev" | "next") {
+  function Control(action: "prev" | "next") {
     if (api) {
-      if (direction === "prev") {
+      if (action === "prev") {
         api.scrollPrev();
-      } else {
+      }
+      if (action === "next") {
         api.scrollNext();
       }
     }
@@ -199,10 +200,10 @@ export default function Projects() {
         </CarouselContent>
       </Carousel>
       <div className="w-full flex items-center justify-center gap-4 mt-4">
-        <Button onClick={() => Scroll("prev")} variant="outline">
+        <Button onClick={() => Control("prev")} variant="outline">
           <IconArrowLeft size={14} />
         </Button>
-        <Button onClick={() => Scroll("next")} variant="outline">
+        <Button onClick={() => Control("next")} variant="outline">
           <IconArrowRight size={14} />
         </Button>
       </div>

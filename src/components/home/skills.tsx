@@ -1,11 +1,20 @@
 "use client";
 import {
   Carousel,
+  CarouselApi,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import {
+  IconArrowLeft,
+  IconArrowRight,
+  IconPlayerPause,
+  IconPlayerPlay,
+} from "@tabler/icons-react";
 import Autoscroll from "embla-carousel-auto-scroll";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { Button } from "../ui/button";
 
 type StackItem = {
   title: string;
@@ -41,6 +50,40 @@ const stack: StackItem[] = [
 ];
 
 export default function Skills() {
+  const [api, setApi] = useState<CarouselApi>();
+  const [isScrolling, setIsScrolling] = useState(true);
+
+  function Control(action: "prev" | "next" | "startStop") {
+    if (api) {
+      if (action === "prev" && !isScrolling) {
+        api.scrollPrev();
+      }
+      if (action === "next" && !isScrolling) {
+        api.scrollNext();
+      }
+      if (action === "startStop") {
+        if (isScrolling) {
+          api.plugins().autoScroll.stop();
+        } else {
+          api.plugins().autoScroll.play();
+        }
+      }
+    }
+  }
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    api.on("autoScroll:play", () => {
+      setIsScrolling(true);
+    });
+    api.on("autoScroll:stop", () => {
+      setIsScrolling(false);
+    });
+  });
+
   return (
     <section className="container px-6 mx-auto mt-32 pt-40" id="skills">
       <h3 className="text-3xl font-medium text-center">{"Compétences"}</h3>
@@ -55,6 +98,7 @@ export default function Skills() {
             stopOnMouseEnter: true,
           }),
         ]}
+        setApi={setApi}
       >
         <CarouselContent>
           {stack.map((item, index) => (
@@ -78,7 +122,29 @@ export default function Skills() {
           ))}
         </CarouselContent>
       </Carousel>
-      <div className="grid xl:grid-cols-2 gap-8 mt-8"></div>
+      <div className="w-full flex items-center justify-center gap-4 mt-4">
+        <Button
+          onClick={() => Control("prev")}
+          variant="outline"
+          disabled={isScrolling}
+        >
+          <IconArrowLeft size={14} />
+        </Button>
+        <Button onClick={() => Control("startStop")} variant="outline">
+          {isScrolling ? (
+            <IconPlayerPause size={14} />
+          ) : (
+            <IconPlayerPlay size={14} />
+          )}
+        </Button>
+        <Button
+          onClick={() => Control("next")}
+          variant="outline"
+          disabled={isScrolling}
+        >
+          <IconArrowRight size={14} />
+        </Button>
+      </div>
     </section>
   );
 }
