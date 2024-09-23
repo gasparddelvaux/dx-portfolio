@@ -72,7 +72,7 @@ export default function Experience() {
               <p className="text-muted-foreground text-sm">
                 {experience.description}
               </p>
-              <div className="flex items-center gap-2 mt-6">
+              <div className="flex items-center flex-wrap gap-2 mt-6">
                 <Badge variant="outline" className="w-fit">
                   {experience.date}
                 </Badge>

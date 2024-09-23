@@ -89,7 +89,7 @@ export default function Hero() {
         <div className="flex flex-col gap-8 h-full justify-center">
           <h2 className="text-5xl font-bold leading-[3.5rem]">
             {" Hey !"}
-            <br /> {"Je m'apelle "}
+            <br /> {"Je m'appelle "}
             <span className="bg-gradient-to-tr from-violet-500 to-rose-500 inline-block text-transparent bg-clip-text">
               {"Gaspard"}
             </span>
