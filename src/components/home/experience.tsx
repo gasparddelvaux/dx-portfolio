@@ -21,9 +21,9 @@ const experiences: ExperienceItem[] = [
   {
     title: "Développeur Full Stack",
     company: "Pyramidal SPRL",
-    date: "Janvier 2023 à Septembre 2024",
+    date: "Janvier 2023 à Décembre 2024",
     description:
-      "Création et développement de sites web et plateformes web en autonomie, principalement en utilisant Laravel pour le backend et Bootstrap pour le frontend, ainsi que Next.js et TailwindCSS pour des projets spécifiques. Stage réalisé dans le cadre de ma formation IFAPME, où j'ai acquis une expertise approfondie dans l'intégration de fonctionnalités complexes et l'optimisation de l'expérience utilisateur.",
+      "Création et développement de sites web et plateformes web en autonomie, principalement en utilisant Laravel pour le backend et Bootstrap pour le frontend, ainsi que Next.js et TailwindCSS pour des projets spécifiques. Stage réalisé dans le cadre de ma formation IFAPME (puis CDD) où j'ai acquis une expertise approfondie dans l'intégration de fonctionnalités complexes et l'optimisation de l'expérience utilisateur.",
     website: "https://pyramidal.be",
   },
   {

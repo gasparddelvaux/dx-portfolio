@@ -19,34 +19,39 @@ import { Button } from "../ui/button";
 type StackItem = {
   title: string;
   svg: string;
+  usage: "front" | "back" | "tool";
 };
 
 const stack: StackItem[] = [
-  { title: "HTML", svg: "html" },
-  { title: "CSS", svg: "css" },
-  { title: "JavaScript", svg: "javascript" },
-  { title: "TypeScript", svg: "typescript" },
-  { title: "PHP", svg: "php" },
+  { title: "HTML", svg: "html", usage: "front" },
+  { title: "CSS", svg: "css", usage: "front" },
+  { title: "JavaScript", svg: "javascript", usage: "front" },
+  { title: "TypeScript", svg: "typescript", usage: "front" },
+  { title: "PHP", svg: "php", usage: "back" },
 
   // Frameworks et Librairies
 
-  { title: "ReactJS", svg: "react" },
-  { title: "NextJS", svg: "next" },
-  { title: "AngularJS", svg: "angular" },
-  { title: "AdonisJS", svg: "adonis" },
-  { title: "Laravel", svg: "laravel" },
-  { title: "Blade", svg: "blade" },
-  { title: "TailwindCSS", svg: "tailwindcss" },
-  { title: "Bootstrap", svg: "bootstrap" },
-  { title: "Shadcn/UI", svg: "shadcn" },
-  { title: "Socket.IO", svg: "websocket" },
+  { title: "ReactJS", svg: "react", usage: "front" },
+  { title: "NextJS", svg: "next", usage: "front" },
+  { title: "AngularJS", svg: "angular", usage: "front" },
+  { title: "AdonisJS", svg: "adonis", usage: "back" },
+  { title: "Laravel", svg: "laravel", usage: "back" },
+  { title: "Blade", svg: "blade", usage: "back" },
+  {
+    title: "TailwindCSS",
+    svg: "tailwindcss",
+    usage: "front",
+  },
+  { title: "Bootstrap", svg: "bootstrap", usage: "front" },
+  { title: "Shadcn/UI", svg: "shadcn", usage: "front" },
+  { title: "Socket.IO", svg: "websocket", usage: "back" },
 
   // Autres
-  { title: "Node.js", svg: "node" },
-  { title: "Git", svg: "git" },
-  { title: "MongoDB", svg: "mongodb" },
-  { title: "MySQL", svg: "mysql" },
-  { title: "Plesk", svg: "plesk" },
+  { title: "Node.js", svg: "node", usage: "back" },
+  { title: "Git", svg: "git", usage: "tool" },
+  { title: "MongoDB", svg: "mongodb", usage: "back" },
+  { title: "MySQL", svg: "mysql", usage: "back" },
+  { title: "Plesk", svg: "plesk", usage: "tool" },
 ];
 
 export default function Skills() {
@@ -83,7 +88,16 @@ export default function Skills() {
       setIsScrolling(false);
     });
   });
-
+  const UsageMap = (type: "front" | "back" | "tool") => {
+    switch (type) {
+      case "front":
+        return "Front-end";
+      case "back":
+        return "Back-end";
+      case "tool":
+        return "Outil";
+    }
+  };
   return (
     <section className="container px-6 mx-auto mt-32 pt-40" id="skills">
       <h3 className="text-3xl font-medium text-center">{"Compétences"}</h3>
@@ -116,6 +130,9 @@ export default function Skills() {
                     className="h-16"
                   />
                   <h6 className="font-medium text-sm mt-4">{item.title}</h6>
+                  <p className="text-xs text-muted-foreground">
+                    {UsageMap(item.usage)}
+                  </p>
                 </div>
               </div>
             </CarouselItem>
