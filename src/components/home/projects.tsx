@@ -6,7 +6,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import { Code } from "@/types/ui";
-import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
+import { IconArrowLeft, IconArrowRight, IconBulb } from "@tabler/icons-react";
 import React from "react";
 import { Button } from "../ui/button";
 import CodeBlock from "./code";
@@ -199,6 +199,10 @@ export default function Projects() {
           ))}
         </CarouselContent>
       </Carousel>
+      <p className="text-center mt-4 flex items-center justify-center gap-1 text-muted-foreground text-sm">
+        <IconBulb size={18} />
+        Cliquez sur le lien d'un site web pour y accéder
+      </p>
       <div className="w-full flex items-center justify-center gap-4 mt-4">
         <Button onClick={() => Control("prev")} variant="outline">
           <IconArrowLeft size={14} />

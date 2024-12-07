@@ -47,14 +47,33 @@ export default function CodeBlock({ code, animated }: CodeBlockProps) {
 
   function getColors(value: string | string[] | boolean | number | object) {
     if (typeof value === "string") {
-      return (
-        <p>
-          <span style={{ color: colorsMap[currentTheme]["green"] }}>
-            {`"` + value + `"`}
-          </span>
-          ,
-        </p>
-      );
+      const urlPattern = /^https:\/\/[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\/[^\s]*)?$/;
+      const isUrl = urlPattern.test(value);
+
+      if (isUrl) {
+        return (
+          <p>
+            <a
+              href={value}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: colorsMap[currentTheme]["green"] }}
+            >
+              {`"` + value + `"`}
+            </a>
+            ,
+          </p>
+        );
+      } else {
+        return (
+          <p>
+            <span style={{ color: colorsMap[currentTheme]["green"] }}>
+              {`"` + value + `"`}
+            </span>
+            ,
+          </p>
+        );
+      }
     }
     if (typeof value === "number") {
       return (
