@@ -6,10 +6,17 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import { Code } from "@/types/ui";
-import { IconArrowLeft, IconArrowRight, IconBulb } from "@tabler/icons-react";
-import React from "react";
+import {
+  IconArrowLeft,
+  IconArrowRight,
+  IconBulb,
+  IconPlayerPause,
+  IconPlayerPlay,
+} from "@tabler/icons-react";
+import React, { useEffect } from "react";
 import { Button } from "../ui/button";
 import CodeBlock from "./code";
+import Autoplay from "embla-carousel-autoplay";
 
 const projects: Code[] = [
   {
@@ -63,6 +70,7 @@ const projects: Code[] = [
         "MySQL",
         "Laravel",
         "SumUp Online Checkout",
+        "Stripe",
         "Plesk",
       ],
       status: "En production",
@@ -76,7 +84,7 @@ const projects: Code[] = [
       title: "Portfolio 2024",
       company: "N/A",
       description:
-        "Ce site web est la dernière version de mon portfolio personnel. Il a été développé pour mettre en avant mes compétences et mes projets personnels dans le but de trouver un nouvel emploi.",
+        "Ce site web est la dernière version de mon portfolio personnel. Il a été développé pour mettre en avant mes compétences et mes projets personnels afin de présenter mon travail et mes réalisations.",
       year: "2024",
       stack: ["NextJS", "TailwindCSS", "Shadcn/UI", "Plesk"],
       status: "En production",
@@ -109,7 +117,7 @@ const projects: Code[] = [
     type: "Project",
     content: {
       title: "SinglePost",
-      company: "Pyramidal SPRL",
+      company: "Pyramidal SRL",
       description:
         "SinglePost est une application web permettant de publier sur tous les réseaux sociaux connectés en une seule fois. Elle permet également de programmer des publications, etc.",
       year: "2024",
@@ -121,8 +129,8 @@ const projects: Code[] = [
         "Laravel",
         "Plesk",
       ],
-      status: "En développement",
-      website: "https://thrills.world",
+      status: "Annulé",
+      website: "https://singlepost.app",
     },
   },
   {
@@ -130,7 +138,7 @@ const projects: Code[] = [
     type: "Project",
     content: {
       title: "MyPyramidal",
-      company: "Pyramidal SPRL",
+      company: "Pyramidal SRL",
       description:
         "MyPyramidal est l'espace client de Pyramidal. Il permet aux clients de gérer leurs sites web, de demander facilement des modifications sur leur site, de consulter les statistiques de leur site, etc.",
       year: "2023",
@@ -182,10 +190,10 @@ const projects: Code[] = [
     variableName: "f2architecte.be",
     type: "Project",
     content: {
-      title: "f2architecte.be",
+      title: "F2 Architecte",
       company: "F2 Architecte",
       description:
-        "f2architecte.be est le site web de l'architecte de M. FILIPUCCI Frédéric, architecte Belge. Le site a été développé pour mettre en avant les projets et les réalisations de l'architecte.",
+        "f2architecte.be est le site web de l'architecte de M. FILIPUCCI Frédéric, architecte Belge. Le site a été développé pour mettre en avant les projets et les réalisations de ce dernier.",
       year: "2021",
       stack: ["Wordpress", "Elementor", "SEO & Analytics", "MySQL", "Plesk"],
       status: "En production",
@@ -193,10 +201,24 @@ const projects: Code[] = [
     },
   },
   {
+    variableName: "pyramidal.be",
+    type: "Project",
+    content: {
+      title: "Pyramidal (Site vitrine)",
+      company: "Pyramidal SRL",
+      description:
+        "pyramidal.be est le site web de Pyramidal SRL, une agence web spécialisée dans la création de sites et applications web sur mesure. Le site a été développé pour mettre en avant les projets et les réalisations de l'agence.",
+      year: "2021",
+      stack: ["HTML", "CSS", "JavaScript", "Plesk"],
+      status: "En production",
+      website: "https://pyramidal.be",
+    },
+  },
+  {
     variableName: "emilievanlaethem.be",
     type: "Project",
     content: {
-      title: "emilievanlaethem.be",
+      title: "Emilie Van Laethem",
       company: "Emilie Van Laethem",
       description:
         "emilievanlaethem.be est le site web personnel d'Emilie Van Laethem, une professeure de chant. Le site a été développé pour mettre en avant les activités et les projets d'Emilie.",
@@ -204,6 +226,32 @@ const projects: Code[] = [
       stack: ["Wordpress", "Elementor", "SEO & Analytics", "MySQL", "Plesk"],
       status: "En production",
       website: "https://emilievanlaethem.be",
+    },
+  },
+  {
+    variableName: "universcloud",
+    type: "Project",
+    content: {
+      title: "UniversCloud",
+      company: "UniversCloud",
+      description:
+        "UniversCloud était un hébergeur cloud & gaming novateur. Cet hébergeur venait avec un site vitrine et un espace client complexe (gestion des services, facturation, support).",
+      year: "2019",
+      stack: [
+        "WHMCS",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "RestAPI",
+        "Virtualizor",
+        "Pterodactyl",
+        "Linux (Ubuntu)",
+        "NodeJS",
+        "MySQL",
+        "Plesk",
+      ],
+      status: "Annulé",
+      website: "https://my.universcloud.be (offline)",
     },
   },
   {
@@ -224,7 +272,7 @@ const projects: Code[] = [
         "MySQL",
         "Plesk",
       ],
-      status: "En pause",
+      status: "Annulé",
       website: "https://walibi-minecraft.eu (offline)",
     },
   },
@@ -232,22 +280,62 @@ const projects: Code[] = [
 
 export default function Projects() {
   const [api, setApi] = React.useState<CarouselApi>();
+  const [isPlaying, setIsPlaying] = React.useState(true);
 
-  function Control(action: "prev" | "next") {
+  function Control(action: "prev" | "next" | "startStop") {
     if (api) {
-      if (action === "prev") {
-        api.scrollPrev();
+      if (action === "prev" && !isPlaying) {
+        if (api.selectedScrollSnap() > 0) {
+          api.scrollPrev();
+        } else {
+          api.scrollTo(projects.length - 1);
+        }
       }
-      if (action === "next") {
-        api.scrollNext();
+      if (action === "next" && !isPlaying) {
+        if (api.selectedScrollSnap() < projects.length - 1) {
+          api.scrollNext();
+        } else {
+          api.scrollTo(0);
+        }
+      }
+      if (action === "startStop") {
+        if (isPlaying) {
+          api.plugins().autoplay.stop();
+        } else {
+          api.plugins().autoplay.play();
+        }
       }
     }
   }
 
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    api.on("autoplay:play", () => {
+      setIsPlaying(true);
+    });
+    api.on("autoplay:stop", () => {
+      setIsPlaying(false);
+    });
+  });
+
   return (
     <section className="container px-6 mx-auto mt-32 pt-40" id="projects">
       <h3 className="text-3xl font-medium text-center">{"Projets"}</h3>
-      <Carousel className="mt-16" setApi={setApi} opts={{ loop: true }}>
+      <Carousel
+        className="mt-16"
+        setApi={setApi}
+        plugins={[
+          Autoplay({
+            delay: 5000,
+            stopOnInteraction: false,
+            stopOnFocusIn: false,
+            stopOnMouseEnter: true,
+          }),
+        ]}
+      >
         <CarouselContent>
           {projects.map((project, index) => (
             <CarouselItem key={index} className="lg:basis-1/2">
@@ -261,10 +349,25 @@ export default function Projects() {
         Cliquez sur le lien d&apos;un site web pour y accéder
       </p>
       <div className="w-full flex items-center justify-center gap-4 mt-4">
-        <Button onClick={() => Control("prev")} variant="outline">
+        <Button
+          onClick={() => Control("prev")}
+          variant="outline"
+          disabled={isPlaying}
+        >
           <IconArrowLeft size={14} />
         </Button>
-        <Button onClick={() => Control("next")} variant="outline">
+        <Button onClick={() => Control("startStop")} variant="outline">
+          {isPlaying ? (
+            <IconPlayerPause size={14} />
+          ) : (
+            <IconPlayerPlay size={14} />
+          )}
+        </Button>
+        <Button
+          onClick={() => Control("next")}
+          variant="outline"
+          disabled={isPlaying}
+        >
           <IconArrowRight size={14} />
         </Button>
       </div>
