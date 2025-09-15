@@ -13,6 +13,66 @@ import CodeBlock from "./code";
 
 const projects: Code[] = [
   {
+<<<<<<< Updated upstream
+=======
+    variableName: "accesstopeppol",
+    type: "Project",
+    content: {
+      title: "Access To Peppol",
+      company: "Pyramidal SRL",
+      description:
+        "Access To Peppol est un pont entre une application de comptabilité Access et le réseau Peppol. Il permet d'envoyer les factures créées dans Access dans le réseau et d'ajouter les factures reçues via le réseau dans la DB Access.",
+      year: "2025",
+      stack: ["NodeJS", "NextJS", "TailwindCSS", "Shadcn/UI"],
+      status: "En production",
+      website: "accesstopeppol.local",
+    },
+  },
+  {
+    variableName: "sylvazen",
+    type: "Project",
+    content: {
+      title: "Sylva Zen",
+      company: "Sylva Zen",
+      description:
+        "Sylva Zen est un centre de bien-être situé à Marchin. Le site web a été développé sur mesure pour présenter les soins disponibles et permettre la réservation en ligne sous un fonctionnement spécifique.",
+      year: "2025",
+      stack: [
+        "NextJS",
+        "TailwindCSS",
+        "Shadcn/UI",
+        "MySQL",
+        "Laravel",
+        "Plesk",
+      ],
+      status: "En production",
+      website: "https://sylvazen.be",
+    },
+  },
+  {
+    variableName: "laurentmarpaux",
+    type: "Project",
+    content: {
+      title: "Laurent Marpaux",
+      company: "Laurent Marpaux",
+      description:
+        "Laurent Marpaux est un patissier belge. Son site web a été développé sur mesure pour présenter son savoir-faire et permettre la vente de ses produits en ligne (click & collect).",
+      year: "2025",
+      stack: [
+        "NextJS",
+        "TailwindCSS",
+        "Shadcn/UI",
+        "MySQL",
+        "Laravel",
+        "SumUp Online Checkout",
+        "Plesk",
+      ],
+      status: "En production",
+      website: "https://laurentmarpaux.be",
+    },
+  },
+  {
+>>>>>>> Stashed changes
     variableName: "gasparddelvauxdev",
     type: "Project",
     content: {
