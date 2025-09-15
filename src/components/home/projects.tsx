@@ -13,8 +13,6 @@ import CodeBlock from "./code";
 
 const projects: Code[] = [
   {
-<<<<<<< Updated upstream
-=======
     variableName: "accesstopeppol",
     type: "Project",
     content: {
@@ -72,7 +70,6 @@ const projects: Code[] = [
     },
   },
   {
->>>>>>> Stashed changes
     variableName: "gasparddelvauxdev",
     type: "Project",
     content: {
