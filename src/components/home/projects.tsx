@@ -70,7 +70,6 @@ const projects: Code[] = [
         "MySQL",
         "Laravel",
         "SumUp Online Checkout",
-        "Stripe",
         "Plesk",
       ],
       status: "En production",
